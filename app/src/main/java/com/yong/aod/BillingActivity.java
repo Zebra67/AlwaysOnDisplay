@@ -16,7 +16,7 @@ public class BillingActivity extends AppCompatActivity
 	private static final String PRODUCT_ID3 = "donate_10000";
 	private static final String PRODUCT_ID4 = "donate_50000";
 	private static final String PRODUCT_ID5 = "ad_remove";
-    private static final String LICENSE_KEY = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjr0/OwBm0O89qNZnwQEH2J/2Aey52u/a3v8L9jVglvRW1ncbxzWODcLavNH8qXX8K1Ty73GAokIOyLdGAU4vpRnOpFZUPjvwjxt5X60Jb6IQeepfHDhAbwW/z9+Y2HPeZEapZN9uCM2PTQgG+JpuZhhQnBSH7AfA1VHdgVEn8Qkm4jOck3cC6tkZCsRcFypw5QX9CpEQmyXim7mb+ystU3InbuBSG7KB0Mq9hI0mEeU7Pnrw//WJTwMOqDROiRl8c/uGoQ43fzMQDl8sVtAkyygYxU3ToHSS5+N1rQ7ZNs8+Qzmpm41wZyoyo1RKZ+3afbl5MGITVpB4PzR/42sHvwIDAQAB";
+    private static final String LICENSE_KEY = "HiddenData";
 	private static final String MERCHANT_ID= "8501-6440-5276";
 	private static final String LOG_TAG = "yong_aod";
 	private BillingProcessor bp;
