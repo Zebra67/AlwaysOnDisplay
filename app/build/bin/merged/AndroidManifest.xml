@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.yong.aod"
+    android:versionCode="36"
+    android:versionName="4.1.release1" >
+
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="26" />
+
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.PREVENT_POWER_KEY" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="com.android.vending.BILLING" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+    <uses-permission android:name="android.permission.BIND_QUICK_SETTINGS_TILE" />
+
+    <meta-data
+        android:name="android.support.VERSION"
+        android:value="25.3.1" />
+
+    <application
+        android:allowBackup="true"
+        android:excludeFromRecents="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:noHistory="true"
+        android:theme="@style/AppTheme" >
+        <service
+            android:name="com.yong.aod.service"
+            android:enabled="true" />
+        <service
+            android:name="com.yong.aod.StartingService"
+            android:enabled="true" />
+        <service
+            android:name="com.yong.aod.TimerAODservice"
+            android:enabled="true" />
+        <service
+            android:name="com.yong.aod.AODProximityService"
+            android:enabled="true" />
+        <service
+            android:name="com.yong.aod.ToggleService"
+            android:icon="@drawable/notilogo"
+            android:label="Always On Display"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE" >
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.yong.aod.NotificationListener"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE" >
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+            </intent-filter>
+        </service>
+
+        <receiver
+            android:name="com.yong.aod.BootReceiver"
+            android:enabled="true"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.yong.aod.CallReceiver"
+            android:enabled="true"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="START_SERVICE" />
+                <action android:name="STOP_SERVICE" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.yong.aod.startReceiver" >
+            <intent-filter>
+                <action android:name="com.yong.aod.ALARM_START" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.yong.aod.stopReceiver" >
+            <intent-filter>
+                <action android:name="com.yong.aod.ALARM_STOP" />
+            </intent-filter>
+        </receiver>
+
+        <activity android:name="com.yong.aod.InfoActivity" />
+        <activity android:name="com.yong.aod.ThemeActivity" />
+        <activity android:name="com.yong.aod.BillingActivity" />
+        <activity android:name="com.yong.aod.PermissionActivity" />
+        <activity android:name="com.gun0912.tedpermission.TedPermissionActivity" />
+        <activity
+            android:name="com.yong.aod.aod"
+            android:excludeFromRecents="true"
+            android:label="aod"
+            android:noHistory="true"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+        </activity>
+        <activity android:name="com.yong.aod.MainActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.yong.aod.SettingsActivity" />
+    </application>
+
+</manifest>

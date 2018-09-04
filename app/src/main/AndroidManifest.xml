@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+	xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.yong.aod" >
+	<uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+	<uses-permission android:name="android.permission.WAKE_LOCK"/>
+	<uses-permission android:name="android.permission.PREVENT_POWER_KEY"/>
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+	<uses-permission android:name="android.permission.INTERNET"/>
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+	<uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>
+	<uses-permission android:name="com.android.vending.BILLING"/>
+	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+	<uses-permission android:name="android.permission.VIBRATE"/>
+	<uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+	<uses-permission android:name="android.permission.BIND_QUICK_SETTINGS_TILE" />
+	
+    <application
+        android:allowBackup="true"
+		android:excludeFromRecents="true"
+		android:noHistory="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+		<service 
+			android:name="service"
+			android:enabled="true"/>
+		<service 
+			android:name="StartingService"
+			android:enabled="true"/>
+		<service 
+			android:name="TimerAODservice"
+			android:enabled="true"/>
+		<service
+			android:name="AODProximityService"
+			android:enabled="true"/>
+		<service
+			android:name="ToggleService"
+            android:label="Always On Display"
+            android:icon="@drawable/notilogo"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
+		<service
+            android:name="NotificationListener"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+            </intent-filter>
+        </service>
+		
+		<receiver
+			android:name=".BootReceiver"
+			android:enabled="true"
+			android:exported="false" >
+			<intent-filter>
+				<action android:name="android.intent.action.BOOT_COMPLETED" />
+			</intent-filter>
+		</receiver>
+		<receiver
+			android:name=".CallReceiver"
+			android:enabled="true"
+			android:exported="false">
+			<intent-filter>
+				<action android:name="START_SERVICE"/>
+				<action android:name="STOP_SERVICE"/>
+			</intent-filter>
+		</receiver>
+		<receiver
+			android:name=".startReceiver">
+			<intent-filter>
+				<action android:name="com.yong.aod.ALARM_START" />
+			</intent-filter>
+		</receiver>
+		<receiver
+			android:name=".stopReceiver">
+			<intent-filter>
+				<action android:name="com.yong.aod.ALARM_STOP" />
+			</intent-filter>
+		</receiver>
+		
+		<activity
+			android:name=".InfoActivity"/>
+		<activity
+			android:name=".ThemeActivity"/>
+		<activity
+			android:name=".BillingActivity"/>
+		<activity
+			android:name=".PermissionActivity"/>
+		<activity
+			android:name="com.gun0912.tedpermission.TedPermissionActivity"/>
+		<activity
+			android:label="aod"
+			android:name=".aod"
+			android:excludeFromRecents="true"
+			android:noHistory="true"
+			android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+			<!--<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
+		</activity>
+        <activity
+            android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+		<activity
+			android:name=".SettingsActivity"/>
+    </application>
+</manifest>
